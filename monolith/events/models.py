@@ -18,8 +18,11 @@ class State(models.Model):
     def __str__(self):
         return f"{self.abbreviation}"
 
+    def to_dict(self):
+        return {"name": self.name, "abbreviation": self.abbreviation}
+
     class Meta:
-        ordering = ("abbreviation",)  # Default ordering for State
+        ordering = ("name", "abbreviation",)  # Default ordering for State
 
 
 class Location(models.Model):
