@@ -117,7 +117,7 @@ function PresentationForm() {
             </div>
             <div className="mb-3">
               <select onChange={handleConferenceChange} value={conference} required className="form-select" id="conference">
-                <option value="">Choose a conference</option>
+                <option key="" value="">Choose a conference</option>
                 {conferences.map(conference => {
                   return (
                     <option key={conference.id} value={conference.id}>{conference.name}</option>
