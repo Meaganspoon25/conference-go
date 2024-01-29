@@ -13,6 +13,19 @@ function LocationList() {
     }
   }
 
+  async function handleDelete(e) {
+    const id = e.target.dataset.id
+
+    const fetchOptions = { method: "DELETE"}
+    const request = await fetch('http://localhost:8000/api/locations', fetchOptions);
+    if (request.ok) {
+      const data = await request.json()
+      alert(`Item ${e.target.dataset.id} has been deleted`)
+
+      getData()
+    }
+  }
+
   useEffect(()=> {
     getData()
   }, []);
@@ -27,6 +40,7 @@ function LocationList() {
             <tr>
               <th>Id</th>
               <th>Name</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -35,6 +49,7 @@ function LocationList() {
                 <tr key={location.href}>
                   <td>{ location.id }</td>
                   <td>{ location.name }</td>
+                  <td><button id={location.id} onClick={handleDelete} className="btn btn-danger">Delete</button></td>
                 </tr>
               );
             })}
