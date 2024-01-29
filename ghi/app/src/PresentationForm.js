@@ -48,7 +48,7 @@ function PresentationForm() {
 
     const response = await fetch(locationUrl, fetchConfig);
     if (response.ok) {
-      const newConference = await response.json();
+      // const newConference = await response.json();
 
       setPresenterName('');
       setPresenterEmail('');
